@@ -1,0 +1,8 @@
+[package]
+name = "cl-frontend"
+version = "0.1.0"
+authors = ["Yew App Developer <hamada.tomoki01@gmail.com>"]
+edition = "2021"
+
+[dependencies]
+yew = { version = "0.20", features = ["csr"] }
