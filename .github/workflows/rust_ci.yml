@@ -4,6 +4,11 @@ jobs:
   build_cache:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        shell: bash
+        working-directory: cl-frontend
+
     env:
       RUSTC_FORCE_INCREMENTAL: 1
 
@@ -14,10 +19,14 @@ jobs:
 
       - name: build
         run: cargo build
-        working-directory: cl-frontend
 
   fmt:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: cl-frontend
 
     needs: build_cache
 
@@ -35,6 +44,11 @@ jobs:
   clippy:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        shell: bash
+        working-directory: cl-frontend
+
     env:
       RUSTC_FORCE_INCREMENTAL: 1
 
@@ -49,10 +63,14 @@ jobs:
 
       - name: clippy
         run: cargo clippy --all-targets --all-features -- -D warnings
-        working-directory: cl-frontend
 
   test:
     runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        shell: bash
+        working-directory: cl-frontend
 
     services:
       postgres:
@@ -79,4 +97,3 @@ jobs:
 
       - name: test
         run: cargo test --all -- --nocapture
-        working-directory: cl-frontend
